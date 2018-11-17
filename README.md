@@ -4,6 +4,11 @@ The face detector for anime/manga using OpenCV.
 
 Original release since 2011 at [OpenCVによるアニメ顔検出ならlbpcascade_animeface.xml](http://ultraist.hatenablog.com/entry/20110718/1310965532) (in Japanese)
 
+## Installation
+
+Run `pip install setup.py` to install it from `setup.py` file 
+or `pip install lbpcascade-animeface` to install from pypi
+
 ## Usage
 
 Download and place the cascade file into your project directory.
@@ -47,6 +52,8 @@ detect(sys.argv[1])
 Run
 
     python detect.py imas.jpg
+    # or if it is installed through setup.py or pypi
+    lbpcascade-animeface imas.jpg
 
 ![result](https://user-images.githubusercontent.com/287255/43184241-ed3f1af8-9022-11e8-8800-468b002c73d9.png)
 
