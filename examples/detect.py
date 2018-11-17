@@ -1,8 +1,17 @@
-import cv2
-import sys
+#!/usr/bin/env python
 import os.path
+import sys
 
-def detect(filename, cascade_file = "../lbpcascade_animeface.xml"):
+import click
+import cv2
+
+
+@click.command()
+@click.argument(filename)
+@click.option('--cascade', default="lbpcascade_animeface.xml", help='Cascade file.')
+@click.option('--write/--no-shout', default=True, help='Write output to file')
+@click.option('--dst-file', default='out.png', help='File destination.')
+def detect(filename, cascade_file="lbpcascade_animeface.xml", write=True, dst_file='out.png'):
     if not os.path.isfile(cascade_file):
         raise RuntimeError("%s: not found" % cascade_file)
 
@@ -21,10 +30,14 @@ def detect(filename, cascade_file = "../lbpcascade_animeface.xml"):
 
     cv2.imshow("AnimeFaceDetect", image)
     cv2.waitKey(0)
-    cv2.imwrite("out.png", image)
+    if write:
+        cv2.imwrite(dst_file, image)
+    return {
+        'faces': faces,
+        'cascade': cascade,
+        'image': image,
+    }
 
-if len(sys.argv) != 2:
-    sys.stderr.write("usage: detect.py <filename>\n")
-    sys.exit(-1)
-    
-detect(sys.argv[1])
+
+if __name__ == '__main__':
+    detect()
