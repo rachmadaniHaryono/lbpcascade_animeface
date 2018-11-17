@@ -1,9 +1,10 @@
 # Include the README
 include *.md
+include lbpcascade_animeface.py 
+include lbpcascade_animeface.xml
 
 # Include the license file
 # include LICENSE.txt
 
 # Include the data files
 # recursive-include data *
-recursive-include libcascade_animeface.xml
