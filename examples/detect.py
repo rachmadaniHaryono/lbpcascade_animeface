@@ -11,7 +11,8 @@ import cv2
 @click.option('--cascade-file', default="lbpcascade_animeface.xml", help='Cascade file.')
 @click.option('--write/--no-write', default=True, help='Write output to file')
 @click.option('--dst-file', default='out.png', help='File destination.')
-def detect(filename, cascade_file="lbpcascade_animeface.xml", write=True, dst_file='out.png'):
+@click.option('--show/--no-show', default=True, help='Show result.')
+def detect(filename, cascade_file="lbpcascade_animeface.xml", write=True, dst_file='out.png', show=True):
     if not os.path.isfile(cascade_file):
         raise RuntimeError("%s: not found" % cascade_file)
 
@@ -28,8 +29,9 @@ def detect(filename, cascade_file="lbpcascade_animeface.xml", write=True, dst_fi
     for (x, y, w, h) in faces:
         cv2.rectangle(image, (x, y), (x + w, y + h), (0, 0, 255), 2)
 
-    cv2.imshow("AnimeFaceDetect", image)
-    cv2.waitKey(0)
+    if show:
+        cv2.imshow("AnimeFaceDetect", image)
+        cv2.waitKey(0)
     if write:
         cv2.imwrite(dst_file, image)
     return {
