@@ -7,9 +7,9 @@ import cv2
 
 
 @click.command()
-@click.argument(filename)
-@click.option('--cascade', default="lbpcascade_animeface.xml", help='Cascade file.')
-@click.option('--write/--no-shout', default=True, help='Write output to file')
+@click.argument('filename')
+@click.option('--cascade-file', default="lbpcascade_animeface.xml", help='Cascade file.')
+@click.option('--write/--no-write', default=True, help='Write output to file')
 @click.option('--dst-file', default='out.png', help='File destination.')
 def detect(filename, cascade_file="lbpcascade_animeface.xml", write=True, dst_file='out.png'):
     if not os.path.isfile(cascade_file):
