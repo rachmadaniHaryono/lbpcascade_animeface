@@ -4,6 +4,7 @@ this setup module is taken and modified from
 https://github.com/pypa/sampleproject/blob/master/setup.py
 """
 
+import shutil
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages
 from os import path
@@ -21,7 +22,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 
 # copy the detect.py file to root
-shutil.copyfile('example/detect.py', 'lbpcascade_animeface')
+shutil.copyfile('examples/detect.py', 'lbpcascade_animeface.py')
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
 # Fields marked as "Optional" may be commented out.
