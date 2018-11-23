@@ -22,7 +22,9 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 
 # copy the detect.py file to root
-shutil.copyfile('examples/detect.py', 'lbpcascade_animeface.py')
+if path.isfile('examples/detect.py'):
+    shutil.copyfile('examples/detect.py', 'lbpcascade_animeface/__main__.py')
+    shutil.copyfile('lbpcascade_animeface.xml', 'lbpcascade_animeface/lbpcascade_animeface.xml')
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
 # Fields marked as "Optional" may be commented out.
@@ -160,7 +162,7 @@ setup(
     # If using Python 2.6 or earlier, then these have to be included in
     # MANIFEST.in as well.
     package_data={  # Optional
-        #  'sample': ['lbpcascade_animeface.xml'],
+        'lbpcascade_animeface': ['lbpcascade_animeface.xml'],
     },
 
     # Although 'package_data' is the preferred approach, in some case you may
@@ -168,6 +170,7 @@ setup(
     # http://docs.python.org/3.4/distutils/setupscript.html#installing-additional-files
     #
     # In this case, 'data_file' will be installed into '<sys.prefix>/my_data'
+    #  data_files=[('my_data', ['data/data_file'])],  # Optional
     #  data_files=[('lbpcascade_animeface.xml', ['data/lbpcascade_animeface.xml'])],  # Optional
 
     # To provide executable scripts, use entry points in preference to the
@@ -179,7 +182,7 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'lbpcascade-animeface=lbpcascade_animeface:cli',
+            'lbpcascade-animeface=lbpcascade_animeface.__main__:cli',
         ],
     },
 
