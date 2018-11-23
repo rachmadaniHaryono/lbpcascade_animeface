@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 import os.path
+import pkg_resources
 import sys
 
 import click
 import cv2
+
+
+XML_PATH = pkg_resources.resource_filename('lbpcascade_animeface', "lbpcascade_animeface.xml")
 
 
 @click.command()
