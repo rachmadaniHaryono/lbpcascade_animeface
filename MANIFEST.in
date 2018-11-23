@@ -1,7 +1,8 @@
 # Include the README
 include *.md
-include lbpcascade_animeface.py 
-include lbpcascade_animeface.xml
+include lbpcascade_animeface/*.py 
+include lbpcascade_animeface/lbpcascade_animeface.xml
+exclude lbpcascade_animeface.xml
 
 # Include the license file
 # include LICENSE.txt
