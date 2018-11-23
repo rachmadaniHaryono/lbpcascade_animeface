@@ -179,7 +179,7 @@ setup(
     # executes the function `main` from this package when invoked:
     entry_points={  # Optional
         'console_scripts': [
-            'lbpcascade-animeface=lbpcascade_animeface:detect',
+            'lbpcascade-animeface=lbpcascade_animeface:cli',
         ],
     },
 
